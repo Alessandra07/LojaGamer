@@ -1,5 +1,6 @@
 package br.org.generation.lojadegamer.controller;
 
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -33,10 +34,11 @@ public class ProdutoController {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 
-	@GetMapping
+	@GetMapping("/all")
 	public ResponseEntity<List<Produto>> getAll(){
 		return ResponseEntity.ok(produtoRepository.findAll());
 	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<Produto> getById(@PathVariable Long id){
 		return produtoRepository.findById(id)
@@ -81,12 +83,14 @@ public class ProdutoController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 
+	// Consulta pelo preço maior do que o preço digitado emm ordem crescente
 	
 	@GetMapping("/preco_maior/{preco}")
 	public ResponseEntity<List<Produto>> getPrecoMaiorQue(@PathVariable BigDecimal preco){ 
 		return ResponseEntity.ok(produtoRepository.findByPrecoGreaterThanOrderByPreco(preco));
 	}
 	
+	// Consulta pelo preço menor do que o preço digitado em ordem decrescente
 	
 	@GetMapping("/preco_menor/{preco}")
 	public ResponseEntity<List<Produto>> getPrecoMenorQue(@PathVariable BigDecimal preco){ 

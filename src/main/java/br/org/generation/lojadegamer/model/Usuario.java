@@ -1,5 +1,6 @@
 package br.org.generation.lojadegamer.model;
 
+
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -36,6 +37,10 @@ public class Usuario {
 	
 	private String foto;
 
+	/**
+	 *  A anotação @Column indica o nome que o atributo terá no Banco de dados
+	 *  A anotação @JsonFormat formata a data para o mesmo padrão do MySQL
+	 */
 	@Column(name = "data_nascimento")
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@NotNull(message = "O atributo Data de Nascimento é Obrigatório!")
