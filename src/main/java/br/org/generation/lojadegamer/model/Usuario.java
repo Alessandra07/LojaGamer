@@ -1,6 +1,5 @@
 package br.org.generation.lojadegamer.model;
 
-
 import java.time.LocalDate;
 
 import javax.persistence.Column;
